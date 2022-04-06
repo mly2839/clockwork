@@ -5,21 +5,31 @@
 */
 
 //imports
-import { Scene, Color, PerspectiveCamera, WebGLRenderer, ACESFilmicToneMapping, sRGBEncoding, Mesh, SphereBufferGeometry, MeshStandardMaterial, PMREMGenerator, RingGeometry, DoubleSide, CylinderBufferGeometry, Group, Vector2, BoxBufferGeometry, Matrix4, Vector3, Euler } from "three";
+import { Scene, Color, TextureLoader, PerspectiveCamera, WebGLRenderer, ACESFilmicToneMapping, sRGBEncoding, Mesh, MeshStandardMaterial, PMREMGenerator, RingGeometry, DoubleSide, CylinderBufferGeometry, Group, Vector2, BoxBufferGeometry, Matrix4, Vector3, Euler } from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 //scene
 let scene = new Scene();
-scene.background = new Color("white");
+
+//Load background texture
+const loader = new TextureLoader();
+loader.load('./assets/images/sky.jpg' , function(texture) {
+    scene.background = texture;  
+});
+
+//getting viewport data
+var viewportWidth  = viewportSize.getWidth(),
+    viewportHeight = viewportSize.getHeight(),
+    viewportAspect = viewportWidth / viewportHeight;
 
 //camera
-let camera = new PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
+let camera = new PerspectiveCamera(45, viewportAspect, 1, 1000);
 camera.position.set(0,0,10);
 
 //renderer
 let renderer = new WebGLRenderer({ antialias: true });
-renderer.setSize( innerWidth, innerHeight);
+renderer.setSize( viewportWidth, viewportHeight, false );
 renderer.toneMapping = ACESFilmicToneMapping;
 renderer.outputEncoding = sRGBEncoding;
 document.body.appendChild(renderer.domElement);
