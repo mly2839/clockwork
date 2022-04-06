@@ -1,0 +1,25 @@
+{
+  "name": "clockwork",
+  "version": "1.0.0",
+  "description": "Timer and Clock Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "snowpack dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mly2839/clockwork.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mly2839/clockwork/issues"
+  },
+  "homepage": "https://github.com/mly2839/clockwork#readme",
+  "dependencies": {
+    "snowpack": "3.8.8",
+    "three": "0.136.0"
+  }
+}
